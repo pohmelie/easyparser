@@ -1,75 +1,38 @@
-## **Description**
+## Description
+This library allows you to recursively extract information from online sites with XPath
 
-
-
-This script is required to extract information using XPATH
-
-
-
-
-## **How to install**
-
-python setup.py install
-
-
-
-
-
-
-## **How to use**
-
-
-**Find your XPATH in Google Chrome:**
-
-![Chrome XPATH](./images/ex1.png)
-
-read more about XPATH - https://msdn.microsoft.com/en-us/library/ms256086(v=vs.110).aspx
-
-**Example #1:**
-Search title of all pages
+## How to install
+```
+python -m pip install git+https://github.com/mainmaster/easyparser
 ```
 
-import easyparser
+## How to use
 
-xpath = "/html/head/title/text()"
+Find your XPath in browser:
 
-if __name__ == "__main__":
-    for title in easyparser.find_recursive("https://python.org", xpath):
-        print("->", title)
+![XPath](./images/ex1.png)
 
-```
+read more about [XPath](https://en.wikipedia.org/wiki/XPath)
 
-**Example #2:**
-Search images of all pages
-```
+``` python
+from easyparser import find_recursive
 
-import easyparser
+# find titles
+for title in find_recursive(url, "/html/head/title/text()"):
+    ...
 
-xpath = "//img/@src"
+# find images
+for img in find_recursive(url, "//img/@src"):
+    ...
 
-if __name__ == "__main__":
-    for img in easyparser.find_recursive("https://python.org", xpath):
-        print("->", img)
+# ignore urls (aka black list)
+ignore = ["https://some-site.com/foo/bar"]
+for _ in find_recursive(url, path, ignore=ignore):
+    ...
 
-```
-
-**Example #3:**
-Search for images on specific pages
-```
-
-import easyparser
-
-#do not search on URL containing these words
-ignore = ['#', 'blog', 'events'] 
-
-#search on URL containing these words
-accept = ['doc', 'downloads']
-
-xpath = "//img/@src"
-
-if __name__ == "__main__":
-    for img in easyparser.find_recursive("https://python.org", xpath, ignore, accept):
-        print("->", img)
-
+# accept urls (aka white list)
+for _ in find_recursive(url, path, accept=[url]):
+    ...
+# last will disable recursive mechanic though
 ```
 
