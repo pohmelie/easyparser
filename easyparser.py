@@ -1,6 +1,6 @@
 import collections
 import logging
-from urllib.parse import urlsplit, urlunsplit, unquote, urljoin
+from urllib.parse import urlsplit, unquote, urljoin
 
 import requests
 from lxml import html
@@ -12,7 +12,8 @@ logger = logging.getLogger(__name__)
 def find_recursive(url, xpath, xpath_url="//a/@href", ignore=None, accept=None, cookies=None):
     urls = collections.deque([url])
     viewed = {url}
-    base_url = "{0.scheme}://{0.netloc}/".format(urlsplit(url))
+    s = urlsplit(url)
+    base_url = f"{s.scheme}://{s.netloc}"
     while urls:
         logger.debug("enqued: %d, viewed: %d", len(urls), len(viewed))
         url = urls.popleft()
@@ -43,5 +44,3 @@ def find_recursive(url, xpath, xpath_url="//a/@href", ignore=None, accept=None, 
                 urls.append(new_url)
             logger.info("add url %s", new_url)
         yield from parsed.xpath(xpath)
-
-
