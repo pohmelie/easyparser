@@ -19,7 +19,7 @@ python setup.py install
 ## **How to use**
 
 
-#####Find your XPATH in Google Chrome:
+####Find your XPATH in Google Chrome:
 
 ![Chrome XPATH](./images/ex1.png)
 
