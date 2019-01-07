@@ -8,7 +8,7 @@ setup(
     description='data ejector',
     author='Andrey C, Nikita M',
     author_email='frill2one@gmail.com',
-    packages=['findrecursive'],
+    packages=['easyparser'],
     install_requires=['requests', 'lxml'],
     long_description=open(join(dirname(__file__), 'README.md')).read()
 )
