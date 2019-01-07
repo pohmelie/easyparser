@@ -19,13 +19,13 @@ python setup.py install
 ## **How to use**
 
 
-####Find your XPATH in Google Chrome:
+**Find your XPATH in Google Chrome:**
 
 ![Chrome XPATH](./images/ex1.png)
 
 read more about XPATH - https://msdn.microsoft.com/en-us/library/ms256086(v=vs.110).aspx
 
-#####Example #1:
+**Example #1:**
 Search title of all pages
 ```
 
@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
 ```
 
-#####Example #2:
+**Example #2:**
 Search images of all pages
 ```
 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
 ```
 
-#####Example #3:
+**Example #3:**
 Search for images on specific pages
 ```
 
